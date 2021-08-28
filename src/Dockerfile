@@ -38,6 +38,7 @@ RUN apk update && \
     make \
     build-base && \
     pip3 install pip --upgrade && \
+    apk add --no-cache libc6-compat && \
     rm -rf /var/cache/apk/*
 
 # Install azure cli

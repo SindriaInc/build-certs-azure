@@ -32,14 +32,14 @@ else
   echo -e "${BLUE}Init certbot cache...${NC}"
   mkdir -p /etc/letsencrypt
 
+  # Azure login
   az login --service-principal -u ${AZURE_CLIENT_ID} -p ${AZURE_SECRET} --tenant ${AZURE_TENANT}
   #az storage account keys list --resource-group ${AZURE_RESOURCE_GROUP} --account-name ${AZURE_STORAGE_ACCOUNT}
   #az storage account show-connection-string --name ${AZURE_STORAGE_ACCOUNT} --resource-group ${AZURE_RESOURCE_GROUP}
 
   #az storage blob list --container-name ${IAC_CERTBOT_CACHE}
-
-
-  aws s3 sync s3://${IAC_CERTBOT_CACHE} /etc/letsencrypt
+  #az storage blob download-batch -d . -s ${IAC_CERTBOT_CACHE} --account-name ${AZURE_STORAGE_ACCOUNT} --account-key 00000000
+  az storage blob download-batch -d /etc/letsencrypt -s ${IAC_CERTBOT_CACHE}
 
   # Cleanup symblinks
   echo -e "${BLUE}Cleanup symblinks...${NC}"
@@ -60,5 +60,8 @@ else
 
   # Update certbot cache
   echo -e "${BLUE}Updating certbot cache...${NC}"
-  aws s3 sync /etc/letsencrypt s3://${IAC_CERTBOT_CACHE}
+  #az storage blob list --container-name ${IAC_CERTBOT_CACHE}
+  #az storage blob sync -c mycontainer --account-name mystorageccount --account-key 00000000 -s "path/to/directory"
+  #az storage blob sync -c ${IAC_CERTBOT_CACHE} --account-name ${AZURE_STORAGE_ACCOUNT} --account-key 00000000 -s "path/to/directory"
+  az storage blob sync -s "/etc/letsencrypt" -c ${IAC_CERTBOT_CACHE}
 fi
