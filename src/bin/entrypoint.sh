@@ -30,6 +30,14 @@ else
   # Init certbot cache
   echo -e "${BLUE}Init certbot cache...${NC}"
   mkdir -p /etc/letsencrypt
+
+  az login --service-principal -u ${AZURE_CLIENT_ID} -p ${AZURE_SECRET} --tenant ${AZURE_TENANT}
+  az storage account keys list --resource-group ${AZURE_RESOURCE_GROUP} --account-name ${AZURE_STORAGE_ACCOUNT}
+  az storage account show-connection-string --name ${AZURE_STORAGE_ACCOUNT} --resource-group ${AZURE_RESOURCE_GROUP}
+
+  az storage blob list --container-name <name>
+
+
   aws s3 sync s3://${IAC_CERTBOT_CACHE} /etc/letsencrypt
 
   # Cleanup symblinks
