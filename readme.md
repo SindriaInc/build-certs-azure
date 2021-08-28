@@ -19,7 +19,7 @@ List of required envs. This envs will be set on your pipeline variables or in yo
 | AZURE_STORAGE_ACCOUNT              | <StorageAccountName>          |
 | AZURE_STORAGE_ACCESS_KEY           | <value>                       |
 | AZURE_STORAGE_CONNECTION_STRING    | <value>                       |
-| AZURE_CONF                         | base64 azure ini secrets      |
+| AZURE_CONF                         | base64 azure ini              |
 | IAC_MODE                           | standalone or void            |
 | IAC_CERTBOT_CACHE                  | example-certbot-cache         |
 | IAC_CERTBOT_EMAIL                  | devops@example.com            |
