@@ -11,9 +11,10 @@ List of required envs. This envs will be set on your pipeline variables or in yo
 
 | Key                       | Value                         |
 | --------------------------|:-----------------------------:|
-| AWS_ACCESS_KEY_ID         | <access-key>                  |
-| AWS_SECRET_ACCESS_KEY     | <secret-key>                  |
-| AWS_DEFAULT_REGION        | eu-central-1                  |
+| AZURE_SUBSCRIPTION_ID     | <SubscriptionID>              |
+| AZURE_CLIENT_ID           | <ApplicationId>               |
+| AZURE_SECRET              | <Password>                    |
+| AZURE_TENANT              | <TenantID>                    |
 | OVH_CONF                  | base64 ovh ini secrets        |
 | IAC_MODE                  | standalone or void            |
 | IAC_CERTBOT_CACHE         | example-certbot-cache         |
