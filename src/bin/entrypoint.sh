@@ -16,10 +16,10 @@ if [ "${IAC_MODE}" == "standalone" ]; then
    echo -e "${BLUE}Init certbot cache...${NC}"
    mkdir -p /etc/letsencrypt
 
-   # Ovh ini
-   echo -e "${BLUE}Setting ovh ini...${NC}"
-   (umask 077; echo ${OVH_CONF} | base64 -d > ovh.ini)
-   chmod 600 ovh.ini
+   # Azure ini
+   echo -e "${BLUE}Setting azure ini...${NC}"
+   (umask 077; echo ${AZURE_CONF} | base64 -d > azure.ini)
+   chmod 600 azure.ini
 
    # Renew existing cert or build
    echo -e "${BLUE}Building certs...${NC}"
@@ -40,10 +40,10 @@ else
   ln -s /etc/letsencrypt/archive/${IAC_CERTBOT_DOMAIN}/fullchain*.pem /etc/letsencrypt/live/${IAC_CERTBOT_DOMAIN}/fullchain.pem || true
   ln -s /etc/letsencrypt/archive/${IAC_CERTBOT_DOMAIN}/privkey*.pem /etc/letsencrypt/live/${IAC_CERTBOT_DOMAIN}/privkey.pem || true
 
-  # Ovh ini
-  echo -e "${BLUE}Setting ovh ini...${NC}"
-  (umask 077; echo ${OVH_CONF} | base64 -d > ovh.ini)
-  chmod 600 ovh.ini
+  # Azure ini
+  echo -e "${BLUE}Setting azure ini...${NC}"
+  (umask 077; echo ${AZURE_CONF} | base64 -d > azure.ini)
+  chmod 600 azure.ini
 
   # Renew existing cert or build
   echo -e "${BLUE}Building certs...${NC}"
