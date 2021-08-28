@@ -1,6 +1,6 @@
-# Build Certs - OVH
+# Build Certs - Azure
 
-This IaC component permit build SSL/TLS certs with ovh dns.
+This IaC component permit build SSL/TLS certs with azure dns.
 
 This is atomic routine for any CI/CD such as gitlab-ci, bitbucket-pipelines etc.
 In any case is possible to use it manually with run.sh helper script.
@@ -42,9 +42,9 @@ For standalone usage you can use certbot cache with volume. Append this to comma
 
 ## Setup Development Environment
 
-- Clone this repo: `git clone git@github.com:SindriaInc/build-certs-ovh.git`
-- Move into it: `cd build-certs-ovh`
-- Build local image: `bash build.sh sindriainc/build-certs-ovh local`
+- Clone this repo: `git clone git@github.com:SindriaInc/build-certs-azure.git`
+- Move into it: `cd build-certs-azure`
+- Build local image: `bash build.sh sindriainc/build-certs-azure local`
 - Setup env: `cp .env.local .env`
 - Setup docker compose: `cp docker-compose.local.yml docker-compose.yml`
 - Start environment: `docker-compose up -d`
