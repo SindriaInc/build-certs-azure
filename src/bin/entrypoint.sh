@@ -23,7 +23,8 @@ if [ "${IAC_MODE}" == "standalone" ]; then
 
    # Renew existing cert or build
    echo -e "${BLUE}Building certs...${NC}"
-   certbot renew -n --agree-tos --dns-ovh --dns-ovh-credentials ovh.ini --dns-ovh-propagation-seconds 60 --cert-name ${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL} || certbot certonly -n --agree-tos --dns-ovh --dns-ovh-credentials ovh.ini --dns-ovh-propagation-seconds 60 -d ${IAC_CERTBOT_DOMAIN} -d *.${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL}
+   #certbot certonly --authenticator dns-azure --preferred-challenges dns --noninteractive --agree-tos --dns-azure-config ~/.secrets/certbot/azure.ini -d example.com
+   certbot renew -n --authenticator dns-azure --preferred-challenges dns --noninteractive --agree-tos --dns-azure-config azure.ini --dns-azure-propagation-seconds 60 --cert-name ${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL} || certbot certonly -n --authenticator dns-azure --preferred-challenges dns --noninteractive --agree-tos --dns-azure-config azure.ini --dns-azure-propagation-seconds 60 -d ${IAC_CERTBOT_DOMAIN} -d *.${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL}
 
 else
 
@@ -55,7 +56,7 @@ else
 
   # Renew existing cert or build
   echo -e "${BLUE}Building certs...${NC}"
-  certbot renew -n --agree-tos --dns-ovh --dns-ovh-credentials ovh.ini --dns-ovh-propagation-seconds 60 --cert-name ${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL} || certbot certonly -n --agree-tos --dns-ovh --dns-ovh-credentials ovh.ini --dns-ovh-propagation-seconds 60 -d ${IAC_CERTBOT_DOMAIN} -d *.${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL}
+  certbot renew -n --authenticator dns-azure --preferred-challenges dns --noninteractive --agree-tos --dns-azure-config azure.ini --dns-azure-propagation-seconds 60 --cert-name ${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL} || certbot certonly -n --authenticator dns-azure --preferred-challenges dns --noninteractive --agree-tos --dns-azure-config azure.ini --dns-azure-propagation-seconds 60 -d ${IAC_CERTBOT_DOMAIN} -d *.${IAC_CERTBOT_DOMAIN} -m ${IAC_CERTBOT_EMAIL}
 
   # Update certbot cache
   echo -e "${BLUE}Updating certbot cache...${NC}"
